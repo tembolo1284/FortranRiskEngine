@@ -1,0 +1,16 @@
+{
+	"compiler-id" : "GNU",
+	"dir-cur-bld" : "/root/fortran-workspace/FortranRiskEngine/build",
+	"dir-cur-src" : "/root/fortran-workspace/FortranRiskEngine",
+	"dir-top-bld" : "/root/fortran-workspace/FortranRiskEngine/build",
+	"dir-top-src" : "/root/fortran-workspace/FortranRiskEngine",
+	"include-dirs" : 
+	[
+		"../include"
+	],
+	"language" : "Fortran",
+	"linked-target-dirs" : [],
+	"module-dir" : "/root/fortran-workspace/FortranRiskEngine/build",
+	"submodule-ext" : ".smod",
+	"submodule-sep" : "@"
+}

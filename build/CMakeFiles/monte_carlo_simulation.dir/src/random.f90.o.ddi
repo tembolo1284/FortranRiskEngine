@@ -1,0 +1,19 @@
+{
+	"revision" : 0,
+	"rules" : 
+	[
+		{
+			"outputs" : [],
+			"primary-output" : "CMakeFiles/monte_carlo_simulation.dir/src/random.f90.o",
+			"provides" : 
+			[
+				{
+					"compiled-module-path" : "random.mod",
+					"logical-name" : "random.mod"
+				}
+			],
+			"requires" : []
+		}
+	],
+	"version" : 0
+}

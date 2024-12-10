@@ -1,0 +1,18 @@
+{
+	"revision" : 0,
+	"rules" : 
+	[
+		{
+			"outputs" : [],
+			"primary-output" : "CMakeFiles/monte_carlo_simulation.dir/src/main.f90.o",
+			"provides" : [],
+			"requires" : 
+			[
+				{
+					"logical-name" : "monte_carlo.mod"
+				}
+			]
+		}
+	],
+	"version" : 0
+}

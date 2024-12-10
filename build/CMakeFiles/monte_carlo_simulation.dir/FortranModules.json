@@ -1,0 +1,6 @@
+{
+	"models.mod" : "/root/fortran-workspace/FortranRiskEngine/build/models.mod",
+	"monte_carlo.mod" : "/root/fortran-workspace/FortranRiskEngine/build/monte_carlo.mod",
+	"payoff.mod" : "/root/fortran-workspace/FortranRiskEngine/build/payoff.mod",
+	"random.mod" : "/root/fortran-workspace/FortranRiskEngine/build/random.mod"
+}
