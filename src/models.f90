@@ -1,29 +1,43 @@
 ! File: src/models.f90
 
 module models
+    use iso_fortran_env, only: real64, int32
     implicit none
     private
-    public :: black_scholes
+
+    ! Public interfaces
+    public :: black_scholes_model
 
 contains
+    function black_scholes_model(spot, strike, r, vol, t) result(price)
+        real(real64), intent(in) :: spot, strike, r, vol, t
+        real(real64) :: price, d1, d2
+        
+        d1 = (log(spot/strike) + (r + vol**2/2.0_real64)*t)/(vol*sqrt(t))
+        d2 = d1 - vol*sqrt(t)
+        
+        price = spot*normal_cdf(d1) - strike*exp(-r*t)*normal_cdf(d2)
+    end function black_scholes_model
 
-    function black_scholes(S, K, T, r, sigma) result(price)
-        real(8), intent(in) :: S, K, T, r, sigma
-        real(8) :: price
-        real(8) :: d1, d2
+    ! Helper function for Black-Scholes
+    function normal_cdf(x) result(cdf)
+        real(real64), intent(in) :: x
+        real(real64) :: cdf
+        real(real64) :: t, y
+        real(real64), parameter :: a1 = 0.254829592_real64
+        real(real64), parameter :: a2 = -0.284496736_real64
+        real(real64), parameter :: a3 = 1.421413741_real64
+        real(real64), parameter :: a4 = -1.453152027_real64
+        real(real64), parameter :: a5 = 1.061405429_real64
+        real(real64), parameter :: p = 0.3275911_real64
 
-        d1 = (log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * sqrt(T))
-        d2 = d1 - sigma * sqrt(T)
-
-        price = S * cdf_normal(d1) - K * exp(-r * T) * cdf_normal(d2)
-    end function black_scholes
-
-    function cdf_normal(x) result(cdf)
-        real(8), intent(in) :: x
-        real(8) :: cdf
-
-        cdf = 0.5 * (1.0 + erf(x / sqrt(2.0)))
-    end function cdf_normal
-
+        t = 1.0_real64/(1.0_real64 + p*abs(x))
+        y = 1.0_real64 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*exp(-x*x/2.0_real64)
+        
+        if (x < 0.0_real64) then
+            cdf = y/2.0_real64
+        else
+            cdf = 1.0_real64 - y/2.0_real64
+        end if
+    end function normal_cdf
 end module models
-
